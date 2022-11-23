@@ -17,8 +17,8 @@ options { tokenVocab=dokuwikiLexer; }
 //footnote: FOOTNOTE_OPEN element FOOTNOTE_CLOSE ;
 //quote: GT element ;
 //code: CODE_OPEN element CODE_CLOSE ;
-text : TEXT+? ;
-h1 : H1 text H1 ;
+text : TEXT+ ;
+h1 : H1 element H1 ;
 //h2 : H2 element H2 ;
 //h3 : H3 element H3 ;
 //h4 : H4 element H4 ;
@@ -48,7 +48,8 @@ element
 //    | footnote
 //    | interwikiLink
 //    | text
-: h1
-    ;
+//    ;
+: (h1 | text)+ ;
+
 document: element+? EOF ;
 //paragraph : OWT+? ;
