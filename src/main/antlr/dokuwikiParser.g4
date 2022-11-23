@@ -1,7 +1,7 @@
 parser grammar dokuwikiParser;
 
 options { tokenVocab=dokuwikiLexer; }
-import urlParser;
+//import urlParser;
 
 
 paragraph: (CHARACTER | SPACE)+ ;

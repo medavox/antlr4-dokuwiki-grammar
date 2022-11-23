@@ -1,6 +1,6 @@
 lexer grammar dokuwikiLexer;
 
-import urlLexer;
+//import urlLexer;
 
 SPACE: ' ' | '\t' | [\u00A0]  ;
 CHARACTER: [!$#"%&*+,\-./:;?@^_`()~] |  '0'..'9' | 'A'..'Z'  | 'a'..'z' | '\'' | '<' | '[' | ']'  ;
