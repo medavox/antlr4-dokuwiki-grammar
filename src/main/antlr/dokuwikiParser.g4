@@ -49,7 +49,7 @@ element
 //    | interwikiLink
 //    | text
 //    ;
-: (h1 | text)+ ;
+: h1 | text ;
 
 document: element+? EOF ;
 //paragraph : OWT+? ;
