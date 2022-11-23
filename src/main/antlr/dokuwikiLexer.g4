@@ -2,8 +2,6 @@ lexer grammar dokuwikiLexer;
 
 //import urlLexer;
 
-SPACE: ' ' | '\t' | [\u00A0]  ;
-CHARACTER: [!$#"%&*+,\-./:;?@^_`()~] |  '0'..'9' | 'A'..'Z'  | 'a'..'z' | '\'' | '<' | '[' | ']'  ;
 BOLD: '**' ;
 ITALIC: '//' ;
 UNDERLINE: '__' ;
@@ -29,12 +27,16 @@ HEADLINE_5:	'==' ;
 UNORDERED_LIST: '  * ' ;
 ORDERED_LIST: '  - ' ;
 QUOTE: '>' ;
-//FILE_OPEN: '<file>' ;
-//FILE_CLOSE: '</file>' ;
+FILE_OPEN:    '<file>' ;
+FILE_CLOSE:   '</file>' ;
 NOWIKI_OPEN: '<nowiki>' ;
 NOWIKI_CLOSE: '</nowiki>' ;
 COMBINE: '|' ;
-WHITESPACE:	[\t\r\n]+ -> skip ;
+//TEXT: ([!$#"%&*+,\-./:;?@^_`()~] |  '0'..'9' | [A-Z]  | [a-z] )+  ;
+//TEXT : [a-zA-Z,."': <>()_\u00A0-]+? ;
+OWT :           . ;
+//SPACE:        ' ' | '\t' | [\u00A0]  ;
+//WHITESPACE:   [\t\r\n]+ -> skip ;
 CODE_OPEN: '<code' -> mode(CODE_MODE);
 
 mode CODE_MODE;
