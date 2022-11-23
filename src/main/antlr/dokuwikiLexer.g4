@@ -1,0 +1,42 @@
+lexer grammar dokuwikiLexer;
+
+import urlLexer;
+
+SPACE: ' ' | '\t' | [\u00A0]  ;
+CHARACTER: [!$#"%&*+,\-./:;?@^_`()~] |  '0'..'9' | 'A'..'Z'  | 'a'..'z' | '\'' | '<' | '[' | ']'  ;
+BOLD: '**' ;
+ITALIC: '//' ;
+UNDERLINE: '__' ;
+MONOSPACE: '\'\'' ;
+SUBSCRIPT_OPEN:	'<sub>' ;
+SUBSCRIPT_CLOSE: '</sub>' ;
+SUPERSCRIPT_OPEN: '<sup>' ;
+SUPERSCRIPT_CLOSE: '</sup>' ;
+DELETED_OPEN: '<del>' ;
+DELETED_CLOSE:	'</del>' ;
+LINEBREAK:  '\\' | '\r'?'\n' | '\r' ;
+LINK_OPEN: '[[' ;
+LINK_CLOSE: ']]' ;
+MEDIA_OPEN:	'{{' ;
+MEDIA_CLOSE: '}}' ;
+FOOTNOTE_OPEN: '((' ;
+FOOTNOTE_CLOSE:	'))' ;
+HEADLINE_1:	'======' ;
+HEADLINE_2:	'=====' ;
+HEADLINE_3:	'====' ;
+HEADLINE_4:	'===' ;
+HEADLINE_5:	'==' ;
+UNORDERED_LIST: '  * ' ;
+ORDERED_LIST: '  - ' ;
+QUOTE: '>' ;
+//FILE_OPEN: '<file>' ;
+//FILE_CLOSE: '</file>' ;
+NOWIKI_OPEN: '<nowiki>' ;
+NOWIKI_CLOSE: '</nowiki>' ;
+COMBINE: '|' ;
+WHITESPACE:	[\t\r\n]+ -> skip ;
+CODE_OPEN: '<code' -> mode(CODE_MODE);
+
+mode CODE_MODE;
+CODE_CLOSE:	'</code>' -> mode(DEFAULT_MODE);
+CODE_TEXT: .+? ;
