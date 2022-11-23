@@ -1,8 +1,15 @@
-# Dokuwiki ANTLR4 Grammar
+to compile:
 
-Originally based on https://github.com/korneliakli/dokuwiki2html/blob/master/dokuwiki2html/src/main/antlr4/dokuwiki.g4
+```shell
+cd src/main/antlr 
+antlr4 dokuwikiLexer.g4 dokuwikiParser.g4 ; javac *.java
+```
+make sure antlr4 is set up.
 
+to run (one possibility uring dev):
 
-NOTES:
+```shell
+grun dokuwiki document -gui ../../../syntax.dokuwiki 2> errors.txt
+```
 
-to get the raw source of a page, append `?do=export_raw` to the URL.
+make sure to download the raw dokuwiki syntax to the project root.
