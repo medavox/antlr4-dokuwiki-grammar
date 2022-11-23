@@ -4,20 +4,51 @@ options { tokenVocab=dokuwikiLexer; }
 //import urlParser;
 
 
-paragraph: (CHARACTER | SPACE)+ ;
-bold: BOLD paragraph BOLD ;
-italic:	ITALIC paragraph ITALIC ;
-underline: UNDERLINE paragraph UNDERLINE ;
-subscript: SUBSCRIPT_OPEN paragraph SUBSCRIPT_CLOSE ;
-superscript: SUPERSCRIPT_OPEN paragraph SUPERSCRIPT_CLOSE ;
-deleted: DELETED_OPEN paragraph DELETED_CLOSE ;
-newline: LINEBREAK ;
-link: LINK_OPEN url COMBINE paragraph LINK_CLOSE ;
-media: MEDIA_OPEN url MEDIA_CLOSE ;
-footnote: FOOTNOTE_OPEN paragraph FOOTNOTE_CLOSE ;
-header:	HEADLINE_1 paragraph HEADLINE_1 | HEADLINE_2 paragraph HEADLINE_2 | HEADLINE_3 paragraph HEADLINE_3 | HEADLINE_4 paragraph HEADLINE_4 | HEADLINE_5 paragraph HEADLINE_5 ;
-quote: QUOTE paragraph ;
+//bold: BOLD element BOLD ;
+//italic:	ITALIC element ITALIC ;
+//underline: UNDERLINE element UNDERLINE ;
+//subscript: SUBSCRIPT_OPEN element SUBSCRIPT_CLOSE ;
+//superscript: SUPERSCRIPT_OPEN element SUPERSCRIPT_CLOSE ;
+//deleted: DELETED_OPEN element DELETED_CLOSE ;
+//newline: LINEBREAK ;
+//link: LINK_OPEN text PIPE element LINK_CLOSE ;
+//interwikiLink: LINK_OPEN text GT element LINK_CLOSE ;
+//media: MEDIA_OPEN text MEDIA_CLOSE ;
+//footnote: FOOTNOTE_OPEN element FOOTNOTE_CLOSE ;
+//quote: GT element ;
+//code: CODE_OPEN element CODE_CLOSE ;
+text : TEXT+? ;
+h1 : H1 text H1 ;
+//h2 : H2 element H2 ;
+//h3 : H3 element H3 ;
+//h4 : H4 element H4 ;
+//h5 : H5 element H5 ;
+//header
+    //: h1 .+? h1
+    //| HEADLINE_2 .+? HEADLINE_2
+    //| HEADLINE_3 OWT+? HEADLINE_3
+    //| HEADLINE_4 OWT+? HEADLINE_4
+    //| HEADLINE_5 OWT+? HEADLINE_5
+    //;
 
-code: CODE_OPEN paragraph CODE_CLOSE ;
-element: bold element | italic element | newline element | paragraph element | underline element | subscript element | superscript element | deleted element | link element | media element | quote element | code element | header element | newline element ;
-document: element+? ;
+
+element 
+//    : bold
+//    | code
+//    | deleted
+//    | h1
+//    | italic
+//    | link
+//    | media
+//    | newline
+//    | quote
+//    | subscript
+//    | superscript
+//    | underline
+//    | footnote
+//    | interwikiLink
+//    | text
+: h1
+    ;
+document: element+? EOF ;
+//paragraph : OWT+? ;
